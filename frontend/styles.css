@@ -1,0 +1,39 @@
+/* Style the body to center everything */
+body {
+    font-family: Arial, sans-serif; /* Simple font that looks clean */
+    background-color: #f4f4f4; /* Light gray background */
+    margin: 0; /* No extra space around the edges */
+    display: flex; /* Helps center the container */
+    justify-content: center; /* Centers it left to right */
+    align-items: center; /* Centers it top to bottom */
+    height: 100vh; /* Full height of the screen */
+}
+
+/* Style the container box */
+.container {
+    background-color: white; /* White background for the form */
+    padding: 20px; /* Space inside the box */
+    border-radius: 8px; /* Rounded corners to look smooth */
+    box-shadow: 0 0 10px gray; /* A shadow to make it pop out */
+    width: 300px; /* Fixed width so it’s not too big */
+    text-align: center; /* Center the text inside */
+}
+
+/* Style the input fields */
+input {
+    padding: 10px; /* Space inside the inputs */
+    margin-bottom: 15px; /* Space below each input */
+    border: 1px solid #ccc; /* Light border around inputs */
+    border-radius: 4px; /* Slightly rounded corners */
+    width: 100%; /* Makes inputs fill the container */
+}
+
+/* Style the login button */
+button {
+    padding: 10px; /* Space inside the button */
+    background-color: #007bff; /* Blue color for the button */
+    color: white; /* White text on the button */
+    border: none; /* No border around it */
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer; /* Shows a hand when hovering */
+}

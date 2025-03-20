@@ -1,0 +1,43 @@
+<!-- This is the register page for Digital Note Library -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- These lines make sure the page works well on all devices -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- The title shows up in the browser tab -->
+    <title>Register - Digital Note Library</title>
+    <!-- Linking the CSS file to add styles into the login page -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- A container div to hold and center everything -->
+    <div class="container">
+        <!-- The main heading at the top for the webpage -->
+        <h1>Digital Note Library</h1>
+        <!-- A line to separate the title from the form -->
+        <hr>
+        <!-- This form lets users sign up with a username, email, and password -->
+        <form id="registerForm">
+            <!-- Username label and input -->
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+            <br> <!-- Line break to move the next input down -->
+            <!-- Email label and input -->
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <br>
+            <!-- Password label and input -->
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            <br>
+            <!-- Button to submit the form -->
+            <button type="submit">Sign Up</button>
+        </form>
+        <!-- A link for people who already have an account -->
+        <p>Already have an account? <a href="login.html">Log In</a></p>
+    </div>
+    <!-- Linking the JavaScript file to add some action -->
+    <script src="register.js"></script>
+</body>
+</html>
