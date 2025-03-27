@@ -1,16 +1,25 @@
-// Get the form by its ID
-const registerForm = document.getElementById('registerForm');
-
-// Run this when the form is submitted
-registerForm.addEventListener('submit', function(event) {
-    // Stop the page from refreshing
+document.getElementById('registerForm').addEventListener('submit', async function(event) {
     event.preventDefault();
-
-    // Get what the user typed
     const username = document.getElementById('username').value;
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
-
-    // Show an alert with the details (just for now)
-    alert('Username: ' + username + ' Email: ' + email + ' Password: ' + password);
-});
+    console.log('Sending to server:', { username, email, password });
+    try {
+      const response = await fetch('http://localhost:3000/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, email, password })
+      });
+      console.log('Response status:', response.status);
+      if (response.ok) {
+        alert('Registration successful');
+        window.location.href = 'login.html';
+      } else {
+        const errorText = await response.text();
+        alert('Registration failed: ' + errorText);
+      }
+    } catch (error) {
+      console.error('Fetch error:', error);
+      alert('Error: ' + error.message);
+    }
+  });
