@@ -1,39 +1,110 @@
-/* Style the body to center everything */
+/* frontend/styles.css */
+
+/* Style the body to center everything and set a nice base look */
 body {
-    font-family: Arial, sans-serif; /* Simple font that looks clean */
-    background-color: #f4f4f4; /* Light gray background */
+    font-family: Arial, sans-serif; /* Clean, simple font—keeps it professional */
+    background-color: #f4f4f4; /* Light gray background for a soft vibe */
     margin: 0; /* No extra space around the edges */
-    display: flex; /* Helps center the container */
-    justify-content: center; /* Centers it left to right */
-    align-items: center; /* Centers it top to bottom */
-    height: 100vh; /* Full height of the screen */
+    display: flex; /* Flexbox magic to center stuff */
+    justify-content: center; /* Left-to-right centering */
+    align-items: center; /* Top-to-bottom centering */
+    height: 100vh; /* Full screen height—looks good on any device */
 }
 
-/* Style the container box */
+/* The container box—our main wrapper for forms and content */
 .container {
-    background-color: white; /* White background for the form */
-    padding: 20px; /* Space inside the box */
-    border-radius: 8px; /* Rounded corners to look smooth */
-    box-shadow: 0 0 10px gray; /* A shadow to make it pop out */
-    width: 300px; /* Fixed width so it’s not too big */
-    text-align: center; /* Center the text inside */
+    background-color: white; /* White background for a crisp look */
+    padding: 20px; /* Some breathing room inside */
+    border-radius: 8px; /* Rounded corners—smooth and modern */
+    box-shadow: 0 0 10px gray; /* A shadow to make it pop off the page */
+    width: 300px; /* Nice compact width for login/register */
+    text-align: center; /* Center-align text for a tidy feel */
 }
 
-/* Style the input fields */
+/* Style all input fields—used in login, register, and dashboard */
 input {
-    padding: 10px; /* Space inside the inputs */
+    padding: 10px; /* Comfy space inside for typing */
     margin-bottom: 15px; /* Space below each input */
-    border: 1px solid #ccc; /* Light border around inputs */
+    border: 1px solid #ccc; /* Light gray border—subtle but clear */
     border-radius: 4px; /* Slightly rounded corners */
-    width: 100%; /* Makes inputs fill the container */
+    width: 100%; /* Full width to fill the container */
+    box-sizing: border-box; /* Keeps padding inside the width */
 }
 
-/* Style the login button */
+/* Buttons—used everywhere, so they gotta look sharp */
 button {
-    padding: 10px; /* Space inside the button */
-    background-color: #007bff; /* Blue color for the button */
-    color: white; /* White text on the button */
-    border: none; /* No border around it */
+    padding: 10px; /* Decent size for clicking */
+    background-color: #007bff; /* Bright blue—stands out nicely */
+    color: white; /* White text for contrast */
+    border: none; /* No border, keeps it clean */
+    border-radius: 4px; /* Rounded corners for a smooth look */
+    cursor: pointer; /* Hand icon on hover—invites clicks */
+}
+
+/* --- Dashboard-Specific Styles Start Here --- */
+
+/* Widen the container for the dashboard—it’s got more stuff! */
+.container.dashboard {
+    width: 600px; /* Bigger than login/register for notes and forms */
+}
+
+/* Style the notes list—no clutter, just notes */
+#notesList {
+    list-style-type: none; /* Ditch the bullets—cleaner this way */
+    padding: 0; /* No extra padding */
+}
+
+/* Each note as a little card—makes them feel special */
+#notesList li {
+    background-color: #f9f9f9; /* Light gray background—soft and subtle */
+    padding: 15px; /* Space inside for readability */
+    margin-bottom: 10px; /* Space between notes */
+    border: 1px solid #ddd; /* Thin border for definition */
+    border-radius: 4px; /* Rounded corners—keeps the vibe consistent */
+    display: flex; /* Flexbox to align title, content, and image */
+    justify-content: space-between; /* Spreads items out nicely */
+    align-items: center; /* Vertically centers everything */
+}
+
+/* Keep note images manageable */
+#notesList img {
+    max-width: 100px; /* Small enough to fit, big enough to see */
+    margin-left: 10px; /* A little space from the text */
+}
+
+/* The note creation form—stands out a bit */
+#noteForm {
+    background-color: #f0f0f0; /* Slightly gray to separate it */
+    padding: 20px; /* Roomy inside */
+    border-radius: 8px; /* Matching rounded corners */
+    margin-bottom: 20px; /* Space before the notes list */
+}
+
+/* Textarea for note content—needs some extra love */
+textarea {
+    width: 100%; /* Full width like inputs */
+    padding: 10px; /* Space inside */
+    margin-bottom: 15px; /* Space below */
+    border: 1px solid #ccc; /* Same border as inputs */
     border-radius: 4px; /* Rounded corners */
-    cursor: pointer; /* Shows a hand when hovering */
+    box-sizing: border-box; /* Keeps padding in check */
+    min-height: 100px; /* Decent height for writing notes */
+}
+
+/* Logout button—make it pop with a different color */
+#logout {
+    background-color: #ff4d4d; /* Red to say "exit here!" */
+    color: white; /* White text for contrast */
+    border: none; /* No border—keeps it sleek */
+    padding: 10px 20px; /* A bit wider for emphasis */
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer; /* Hand on hover */
+    float: right; /* Stick it to the right side */
+}
+
+/* Clear floats so nothing gets weird */
+.container::after {
+    content: "";
+    display: table;
+    clear: both; /* Keeps layout tidy after floating elements */
 }
