@@ -1,35 +1,85 @@
-<!-- frontend/dashboard.html -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - Digital Note Library</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Welcome to Your Dashboard</h1>
+    <nav>
+        <input type="text" id="searchBar" placeholder="Search notes">
+        <select id="categoryFilter">
+            <option value="">All Categories</option>
+            <option value="Work">Work</option>
+            <option value="Personal">Personal</option>
+            <option value="Ideas">Ideas</option>
+            <option value="Uncategorized">Uncategorized</option>
+        </select>
+        <div class="nav-links">
+            <a href="dashboard.html">Dashboard</a>
+            <a href="profile.html">Profile</a>
+        </div>
+        <button onclick="createNote()">Create Note</button>
         <button id="logout">Log Out</button>
-        <hr>
-        <h2>Create a New Note</h2>
-        <form id="noteForm">
-            <label for="title">Title:</label>
-            <input type="text" id="title" name="title" required>
-            <br>
-            <label for="content">Content:</label>
-            <textarea id="content" name="content" required></textarea>
-            <br>
-            <label for="image">Upload Image (optional):</label>
-            <input type="file" id="image" name="image">
-            <br>
-            <button type="submit">Create Note</button>
-        </form>
+    </nav>
+    <div class="container dashboard">
+        <h1>Welcome to Your Dashboard</h1>
         <hr>
         <h2>Your Notes</h2>
-        <ul id="notesList"></ul>
+        <ul id="notesList">
+            <!-- Notes will be dynamically added here -->
+        </ul>
+        <div class="pagination-buttons">
+            <button id="seeMoreBtn" style="display: none;">See More</button>
+            <button id="seeLessBtn" style="display: none;">See Less</button>
+        </div>
     </div>
+    <div id="noteModal" class="modal">
+        <div class="modal-content">
+            <span class="close">×</span>
+            <form id="noteForm">
+                <label for="title">Title:</label>
+                <input type="text" id="title" name="title" required>
+                <br>
+                <label for="content">Content:</label>
+                <textarea id="content" name="content" required></textarea>
+                <br>
+                <label for="category">Category:</label>
+                <select id="category" name="category">
+                    <option value="Work">Work</option>
+                    <option value="Personal">Personal</option>
+                    <option value="Ideas">Ideas</option>
+                    <option value="Uncategorized" selected>Uncategorized</option>
+                </select>
+                <br>
+                <label for="image">Upload New Image (optional):</label>
+                <div class="image-upload-container">
+                    <input type="file" id="image" name="image">
+                    <button type="button" id="removeImageBtn" class="remove-image-btn" style="display: none;">×</button>
+                </div>
+                <br>
+                <button type="submit">Save Note</button>
+            </form>
+        </div>
+    </div>
+    <div id="noteDetailModal" class="modal">
+        <div class="modal-content">
+            <span class="close">×</span>
+            <h2 id="detailTitle"></h2>
+            <p><strong>Category:</strong> <span id="detailCategory"></span></p>
+            <p><strong>Created At:</strong> <span id="detailCreatedAt"></span></p>
+            <p><strong>Content:</strong></p>
+            <p id="detailContent"></p>
+            <div id="detailImage"></div>
+            <button id="editNoteBtn">Edit Note</button>
+            <button id="deleteNoteBtn">Delete Note</button>
+        </div>
+    </div>
+    <footer>
+        <p>© 2025 Digital Note Library. All rights reserved.</p>
+    </footer>
     <script src="dashboard.js"></script>
 </body>
 </html>

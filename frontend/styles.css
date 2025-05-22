@@ -1,110 +1,428 @@
 /* frontend/styles.css */
 
-/* Style the body to center everything and set a nice base look */
+/* Ensure the body takes up the full viewport height and organizes content in a column */
 body {
-    font-family: Arial, sans-serif; /* Clean, simple font—keeps it professional */
-    background-color: #f4f4f4; /* Light gray background for a soft vibe */
-    margin: 0; /* No extra space around the edges */
-    display: flex; /* Flexbox magic to center stuff */
-    justify-content: center; /* Left-to-right centering */
-    align-items: center; /* Top-to-bottom centering */
-    height: 100vh; /* Full screen height—looks good on any device */
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 60px; /* Space for footer */
+}
+
+/* Add padding-top only if the nav exists */
+body:has(nav) {
+    padding-top: 60px; /* Space for fixed nav */
+}
+
+/* Light mode (default) */
+body.light {
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* Dark mode */
+body.dark {
+    background-color: #333;
+    color: #f4f4f4;
+}
+
+body.dark .container {
+    background-color: #444;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+body.dark button {
+    background-color: #555;
+    color: #fff;
+}
+
+body.dark #logout {
+    background-color: #ff4d4d;
+}
+
+body.dark #editNoteBtn {
+    background-color: #007bff;
+}
+
+body.dark #deleteNoteBtn {
+    background-color: #ff4d4d;
+}
+
+body.dark input,
+body.dark textarea,
+body.dark select {
+    background-color: #555;
+    color: #fff;
+    border: 1px solid #777;
+}
+
+body.dark #notesList li {
+    background-color: #555;
+    border: 1px solid #777;
+}
+
+body.dark #noteForm {
+    background-color: #666;
+}
+
+body.dark nav {
+    background-color: #444;
+    box-shadow: 0 2px 5px rgba(255, 255, 255, 0.1);
+}
+
+body.dark footer {
+    background-color: #444;
+    color: #f4f4f4;
+}
+
+body.dark footer a {
+    color: #bbdefb;
+}
+
+body.dark #seeMoreBtn,
+body.dark #seeLessBtn {
+    background-color: #218838;
+}
+
+body.dark .show-password-label {
+    color: #f4f4f4;
+}
+
+body.dark .remove-image-btn {
+    background-color: #ff4d4d;
+    color: #fff;
 }
 
 /* The container box—our main wrapper for forms and content */
 .container {
-    background-color: white; /* White background for a crisp look */
-    padding: 20px; /* Some breathing room inside */
-    border-radius: 8px; /* Rounded corners—smooth and modern */
-    box-shadow: 0 0 10px gray; /* A shadow to make it pop off the page */
-    width: 300px; /* Nice compact width for login/register */
-    text-align: center; /* Center-align text for a tidy feel */
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px gray;
+    width: 300px;
+    text-align: center;
+    margin-bottom: 20px;
 }
 
 /* Style all input fields—used in login, register, and dashboard */
-input {
-    padding: 10px; /* Comfy space inside for typing */
-    margin-bottom: 15px; /* Space below each input */
-    border: 1px solid #ccc; /* Light gray border—subtle but clear */
-    border-radius: 4px; /* Slightly rounded corners */
-    width: 100%; /* Full width to fill the container */
-    box-sizing: border-box; /* Keeps padding inside the width */
+input,
+select {
+    padding: 10px;
+    margin: 0 10px; /* Add margin for spacing between inputs */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 /* Buttons—used everywhere, so they gotta look sharp */
 button {
-    padding: 10px; /* Decent size for clicking */
-    background-color: #007bff; /* Bright blue—stands out nicely */
-    color: white; /* White text for contrast */
-    border: none; /* No border, keeps it clean */
-    border-radius: 4px; /* Rounded corners for a smooth look */
-    cursor: pointer; /* Hand icon on hover—invites clicks */
+    padding: 10px 15px;
+    margin: 0 10px; /* Add margin for spacing between buttons */
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Navigation bar for all pages */
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between; /* Revert to space-between for natural spacing */
+    align-items: center;
+    background-color: #fff;
+    padding: 10px 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+/* Wrapper for navigation links to center them */
+.nav-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px; /* Space between links */
+}
+
+nav a {
+    color: #007bff;
+    text-decoration: none;
+    margin: 0;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* Style the search bar */
+#searchBar {
+    width: 200px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    background: #fff;
+    color: #333;
+}
+
+#searchBar::placeholder {
+    color: #aaa;
+}
+
+/* Style the category filter dropdown */
+#categoryFilter {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+/* Footer for all pages */
+footer {
+    background-color: #f8f9fa;
+    padding: 10px;
+    text-align: center;
+    width: 100%;
+    margin-top: auto;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+}
+
+footer a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
 }
 
 /* --- Dashboard-Specific Styles Start Here --- */
 
 /* Widen the container for the dashboard—it’s got more stuff! */
 .container.dashboard {
-    width: 600px; /* Bigger than login/register for notes and forms */
+    width: 600px;
+    max-height: calc(100vh - 140px); /* Leave space for fixed nav and footer */
+    overflow-y: auto; /* Scrollable container */
 }
 
 /* Style the notes list—no clutter, just notes */
 #notesList {
-    list-style-type: none; /* Ditch the bullets—cleaner this way */
-    padding: 0; /* No extra padding */
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 20px;
 }
 
 /* Each note as a little card—makes them feel special */
 #notesList li {
-    background-color: #f9f9f9; /* Light gray background—soft and subtle */
-    padding: 15px; /* Space inside for readability */
-    margin-bottom: 10px; /* Space between notes */
-    border: 1px solid #ddd; /* Thin border for definition */
-    border-radius: 4px; /* Rounded corners—keeps the vibe consistent */
-    display: flex; /* Flexbox to align title, content, and image */
-    justify-content: space-between; /* Spreads items out nicely */
-    align-items: center; /* Vertically centers everything */
+    background-color: #f9f9f9;
+    padding: 15px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer; /* Indicate clickable */
+    transition: background-color 0.2s;
 }
 
-/* Keep note images manageable */
-#notesList img {
-    max-width: 100px; /* Small enough to fit, big enough to see */
-    margin-left: 10px; /* A little space from the text */
+#notesList li:hover {
+    background-color: #e9ecef;
+}
+
+/* Style for note preview */
+.note-preview {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+/* Truncated content style */
+.note-preview .content {
+    color: #666;
+    font-size: 14px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Style for buttons inside the note preview */
+.note-preview button {
+    margin: 5px 0 0 0;
+    padding: 5px 10px;
+    font-size: 12px;
 }
 
 /* The note creation form—stands out a bit */
 #noteForm {
-    background-color: #f0f0f0; /* Slightly gray to separate it */
-    padding: 20px; /* Roomy inside */
-    border-radius: 8px; /* Matching rounded corners */
-    margin-bottom: 20px; /* Space before the notes list */
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
 }
 
 /* Textarea for note content—needs some extra love */
 textarea {
-    width: 100%; /* Full width like inputs */
-    padding: 10px; /* Space inside */
-    margin-bottom: 15px; /* Space below */
-    border: 1px solid #ccc; /* Same border as inputs */
-    border-radius: 4px; /* Rounded corners */
-    box-sizing: border-box; /* Keeps padding in check */
-    min-height: 100px; /* Decent height for writing notes */
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    min-height: 100px;
+}
+
+/* Modal for creating/editing notes and viewing details */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    overflow-y: auto; /* Allow scrolling if modal content overflows */
+    z-index: 1001; /* Ensure modal is above the footer */
+}
+
+.modal-content {
+    background: white;
+    margin: 5% auto;
+    padding: 20px;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 5px;
+    max-height: calc(100vh - 140px); /* Account for nav and footer */
+    overflow-y: auto; /* Make modal content scrollable */
+    box-sizing: border-box;
+}
+
+body.dark .modal-content {
+    background: #444;
+}
+
+.close {
+    float: right;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/* Detailed view modal styles */
+#noteDetailModal .modal-content p {
+    margin: 10px 0;
+}
+
+#noteDetailModal #detailContent {
+    background-color: #f9f9f9;
+    padding: 10px;
+    border-radius: 4px;
+    white-space: pre-wrap; /* Preserve line breaks */
+}
+
+body.dark #noteDetailModal #detailContent {
+    background-color: #555;
+}
+
+#noteDetailModal #detailImage img {
+    max-width: 100%;
+    margin-top: 10px;
+    border-radius: 4px;
+}
+
+#editNoteBtn {
+    background-color: #007bff;
+    margin-right: 10px;
+}
+
+#deleteNoteBtn {
+    background-color: #ff4d4d;
+}
+
+/* Pagination buttons container */
+.pagination-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+/* See More and See Less buttons */
+#seeMoreBtn,
+#seeLessBtn {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Show Password checkbox label */
+.show-password-label {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 10px 0;
+    font-size: 14px;
+    color: #333;
+}
+
+.show-password-label input[type="checkbox"] {
+    margin: 0 5px 0 0;
+    width: auto; /* Override the default width for checkboxes */
+}
+
+/* Image upload container */
+.image-upload-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+}
+
+.image-upload-container input[type="file"] {
+    flex: 1;
+}
+
+/* Remove image button (X) */
+.remove-image-btn {
+    padding: 0;
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+    text-align: center;
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.remove-image-btn:hover {
+    background-color: #e63946;
 }
 
 /* Logout button—make it pop with a different color */
 #logout {
-    background-color: #ff4d4d; /* Red to say "exit here!" */
-    color: white; /* White text for contrast */
-    border: none; /* No border—keeps it sleek */
-    padding: 10px 20px; /* A bit wider for emphasis */
-    border-radius: 4px; /* Rounded corners */
-    cursor: pointer; /* Hand on hover */
-    float: right; /* Stick it to the right side */
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
 }
 
 /* Clear floats so nothing gets weird */
 .container::after {
     content: "";
     display: table;
-    clear: both; /* Keeps layout tidy after floating elements */
+    clear: both;
 }
