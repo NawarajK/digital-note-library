@@ -1,34 +1,47 @@
+<!-- This is the profile page where users can see their details and change their theme -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile - Digital Note Library</title>
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <link rel="stylesheet" href="styles.css">
+    <!-- Set up the page basics -->
+    <meta charset="UTF-8"> <!-- Use UTF-8 for text encoding -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Make the page fit on all screen sizes -->
+    <title>Profile - Digital Note Library</title> <!-- Title of the page shown in the browser tab -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico"> <!-- Small icon shown in the browser tab -->
+    <link rel="stylesheet" href="styles.css"> <!-- Link to the styles.css file for styling -->
 </head>
 <body>
+    <!-- Navigation bar at the top of the page -->
     <nav>
+        <!-- Links to other pages -->
         <div class="nav-links">
-            <a href="dashboard.html">Dashboard</a>
-            <a href="profile.html">Profile</a>
+            <a href="dashboard.html">Dashboard</a> <!-- Link to the dashboard page -->
+            <a href="profile.html">Profile</a> <!-- Link to the profile page (current page) -->
         </div>
+        <!-- Button to log out of the app -->
         <button id="logout">Log Out</button>
     </nav>
+    <!-- Main content area of the profile page -->
     <div class="container">
+        <!-- Page title -->
         <h1>Your Profile</h1>
-        <hr>
+        <hr> <!-- Line to separate sections -->
+        <!-- Show the user’s username -->
         <p><strong>Username:</strong> <span id="username"></span></p>
+        <!-- Show the user’s email -->
         <p><strong>Email:</strong> <span id="email"></span></p>
+        <!-- Dropdown to change the theme (light or dark mode) -->
         <label for="theme">Select Theme:</label>
         <select id="theme">
-            <option value="light">Bright Mode</option>
-            <option value="dark">Dark Mode</option>
+            <option value="light">Bright Mode</option> <!-- Option for light theme -->
+            <option value="dark">Dark Mode</option> <!-- Option for dark theme -->
         </select>
     </div>
+    <!-- Footer at the bottom of the page -->
     <footer>
+        <!-- Copyright notice -->
         <p>© 2025 Digital Note Library. All rights reserved.</p>
     </footer>
+    <!-- Link to the JavaScript file that makes the page work -->
     <script src="profile.js"></script>
 </body>
 </html>

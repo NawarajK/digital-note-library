@@ -1,85 +1,124 @@
+<!-- This is the main dashboard page where users manage their notes -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - Digital Note Library</title>
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <link rel="stylesheet" href="styles.css">
+    <!-- Set up the page basics -->
+    <meta charset="UTF-8"> <!-- Use UTF-8 for text encoding -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Make the page fit on all screen sizes -->
+    <title>Dashboard - Digital Note Library</title> <!-- Title of the page shown in the browser tab -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico"> <!-- Small icon shown in the browser tab -->
+    <link rel="stylesheet" href="styles.css"> <!-- Link to the styles.css file for styling -->
 </head>
 <body>
+    <!-- Navigation bar at the top of the page -->
     <nav>
+        <!-- Search bar to search for notes -->
         <input type="text" id="searchBar" placeholder="Search notes">
+        <!-- Dropdown to filter notes by category -->
         <select id="categoryFilter">
-            <option value="">All Categories</option>
-            <option value="Work">Work</option>
-            <option value="Personal">Personal</option>
-            <option value="Ideas">Ideas</option>
-            <option value="Uncategorized">Uncategorized</option>
+            <option value="">All Categories</option> <!-- Show all notes -->
+            <option value="Work">Work</option> <!-- Filter by Work category -->
+            <option value="Personal">Personal</option> <!-- Filter by Personal category -->
+            <option value="Ideas">Ideas</option> <!-- Filter by Ideas category -->
+            <option value="Uncategorized">Uncategorized</option> <!-- Filter by Uncategorized category -->
         </select>
+        <!-- Links to other pages -->
         <div class="nav-links">
-            <a href="dashboard.html">Dashboard</a>
-            <a href="profile.html">Profile</a>
+            <a href="dashboard.html">Dashboard</a> <!-- Link to the dashboard page -->
+            <a href="profile.html">Profile</a> <!-- Link to the profile page -->
         </div>
+        <!-- Button to create a new note -->
         <button onclick="createNote()">Create Note</button>
+        <!-- Button to log out of the app -->
         <button id="logout">Log Out</button>
     </nav>
+
+    <!-- Main content area of the dashboard -->
     <div class="container dashboard">
+        <!-- Welcome message -->
         <h1>Welcome to Your Dashboard</h1>
-        <hr>
+        <hr> <!-- Line to separate sections -->
+        <!-- Section title for the notes -->
         <h2>Your Notes</h2>
+        <!-- List where notes will be shown -->
         <ul id="notesList">
-            <!-- Notes will be dynamically added here -->
+            <!-- Notes will be added here by JavaScript -->
         </ul>
+        <!-- Buttons to see more or fewer notes -->
         <div class="pagination-buttons">
-            <button id="seeMoreBtn" style="display: none;">See More</button>
-            <button id="seeLessBtn" style="display: none;">See Less</button>
+            <button id="seeMoreBtn" style="display: none;">See More</button> <!-- Button to load more notes (hidden at first) -->
+            <button id="seeLessBtn" style="display: none;">See Less</button> <!-- Button to show fewer notes (hidden at first) -->
         </div>
     </div>
+
+    <!-- Pop-up form to create or edit a note -->
     <div id="noteModal" class="modal">
         <div class="modal-content">
+            <!-- Button to close the pop-up -->
             <span class="close">×</span>
+            <!-- Form to enter note details -->
             <form id="noteForm">
+                <!-- Field for the note title -->
                 <label for="title">Title:</label>
                 <input type="text" id="title" name="title" required>
                 <br>
+                <!-- Field for the note content -->
                 <label for="content">Content:</label>
                 <textarea id="content" name="content" required></textarea>
                 <br>
+                <!-- Dropdown to choose the note category -->
                 <label for="category">Category:</label>
                 <select id="category" name="category">
                     <option value="Work">Work</option>
                     <option value="Personal">Personal</option>
                     <option value="Ideas">Ideas</option>
-                    <option value="Uncategorized" selected>Uncategorized</option>
+                    <option value="Uncategorized" selected>Uncategorized</option> <!-- Default category -->
                 </select>
                 <br>
+                <!-- Field to upload an image for the note -->
                 <label for="image">Upload New Image (optional):</label>
                 <div class="image-upload-container">
-                    <input type="file" id="image" name="image">
+                    <input type="file" id="image" name="image"> <!-- Input to select an image -->
+                    <!-- Button to remove the uploaded image (hidden at first) -->
                     <button type="button" id="removeImageBtn" class="remove-image-btn" style="display: none;">×</button>
                 </div>
                 <br>
+                <!-- Button to save the note -->
                 <button type="submit">Save Note</button>
             </form>
         </div>
     </div>
+
+    <!-- Pop-up to view note details -->
     <div id="noteDetailModal" class="modal">
         <div class="modal-content">
+            <!-- Button to close the pop-up -->
             <span class="close">×</span>
+            <!-- Area to show the note title -->
             <h2 id="detailTitle"></h2>
+            <!-- Area to show the note category -->
             <p><strong>Category:</strong> <span id="detailCategory"></span></p>
+            <!-- Area to show when the note was created -->
             <p><strong>Created At:</strong> <span id="detailCreatedAt"></span></p>
+            <!-- Area to show the note content -->
             <p><strong>Content:</strong></p>
             <p id="detailContent"></p>
+            <!-- Area to show the note image (if there is one) -->
             <div id="detailImage"></div>
+            <!-- Button to edit the note -->
             <button id="editNoteBtn">Edit Note</button>
+            <!-- Button to delete the note -->
             <button id="deleteNoteBtn">Delete Note</button>
         </div>
     </div>
+
+    <!-- Footer at the bottom of the page -->
     <footer>
+        <!-- Copyright notice -->
         <p>© 2025 Digital Note Library. All rights reserved.</p>
     </footer>
+
+    <!-- Link to the JavaScript file that makes the page work -->
     <script src="dashboard.js"></script>
 </body>
 </html>

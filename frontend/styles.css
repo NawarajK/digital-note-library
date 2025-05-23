@@ -1,428 +1,489 @@
 /* frontend/styles.css */
 
-/* Ensure the body takes up the full viewport height and organizes content in a column */
+/* Style the body to take up the full height and center the content */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-bottom: 60px; /* Space for footer */
+    font-family: Arial, sans-serif; /* Use a clean font for text */
+    background-color: #f4f4f4; /* Set a light gray background color */
+    margin: 0; /* Remove default spacing around the page */
+    min-height: 100vh; /* Make the page at least the full screen height */
+    display: flex; /* Use flexbox to organize content */
+    flex-direction: column; /* Stack content in a column */
+    align-items: center; /* Center content horizontally */
+    padding-bottom: 60px; /* Add space at the bottom for the footer */
+    /* Add a background image to the page */
+    background-image: url('images/background.jpg'); /* Use an image as the background */
+    background-size: cover; /* Make the image cover the whole page */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Don’t repeat the image */
+    background-attachment: fixed; /* Keep the image fixed when scrolling */
+    position: relative; /* Allow an overlay to be positioned */
 }
 
-/* Add padding-top only if the nav exists */
+/* Add a dark overlay to make the background image less bright */
+body::before {
+    content: ''; /* Create an empty overlay */
+    position: fixed; /* Make the overlay cover the whole page */
+    top: 0; /* Start at the top */
+    left: 0; /* Start at the left */
+    width: 100%; /* Cover the full width */
+    height: 100%; /* Cover the full height */
+    background: rgba(0, 0, 0, 0.7); /* Add a dark overlay with 70% opacity */
+    z-index: -1; /* Put the overlay behind all content */
+    filter: brightness(0.5); /* Make the background image darker */
+}
+
+/* Add extra space at the top if there’s a navigation bar */
 body:has(nav) {
-    padding-top: 60px; /* Space for fixed nav */
+    padding-top: 60px; /* Add space for the fixed navigation bar */
 }
 
-/* Light mode (default) */
+/* Style for light mode (default) */
 body.light {
-    background-color: #f4f4f4;
-    color: #333;
+    background-color: transparent; /* Show the background image */
+    color: #333; /* Use dark text for readability */
 }
 
-/* Dark mode */
+/* Style for dark mode */
 body.dark {
-    background-color: #333;
-    color: #f4f4f4;
+    background-color: transparent; /* Show the background image */
+    color: #f4f4f4; /* Use light text for readability */
 }
 
+/* Style the main container in dark mode */
 body.dark .container {
-    background-color: #444;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+    background-color: #444; /* Use a dark gray background */
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1); /* Add a subtle white shadow */
 }
 
+/* Style buttons in dark mode */
 body.dark button {
-    background-color: #555;
-    color: #fff;
+    background-color: #555; /* Use a darker gray background */
+    color: #fff; /* Use white text */
 }
 
+/* Style the logout button in dark mode */
 body.dark #logout {
-    background-color: #ff4d4d;
+    background-color: #ff4d4d; /* Keep the red color for logout */
 }
 
+/* Style the edit note button in dark mode */
 body.dark #editNoteBtn {
-    background-color: #007bff;
+    background-color: #007bff; /* Keep the blue color for edit */
 }
 
+/* Style the delete note button in dark mode */
 body.dark #deleteNoteBtn {
-    background-color: #ff4d4d;
+    background-color: #ff4d4d; /* Keep the red color for delete */
 }
 
+/* Style input fields, textareas, and dropdowns in dark mode */
 body.dark input,
 body.dark textarea,
 body.dark select {
-    background-color: #555;
-    color: #fff;
-    border: 1px solid #777;
+    background-color: #555; /* Use a dark gray background */
+    color: #fff; /* Use white text */
+    border: 1px solid #777; /* Use a darker gray border */
 }
 
+/* Style the notes list items in dark mode */
 body.dark #notesList li {
-    background-color: #555;
-    border: 1px solid #777;
+    background-color: #555; /* Use a dark gray background */
+    border: 1px solid #777; /* Use a darker gray border */
 }
 
+/* Style the note form in dark mode */
 body.dark #noteForm {
-    background-color: #666;
+    background-color: #666; /* Use a slightly lighter gray background */
 }
 
+/* Style the navigation bar in dark mode */
 body.dark nav {
-    background-color: #444;
-    box-shadow: 0 2px 5px rgba(255, 255, 255, 0.1);
+    background-color: #444; /* Use a dark gray background */
+    box-shadow: 0 2px 5px rgba(255, 255, 255, 0.1); /* Add a subtle white shadow */
 }
 
+/* Style the footer in dark mode */
 body.dark footer {
-    background-color: #444;
-    color: #f4f4f4;
+    background-color: #444; /* Use a dark gray background */
+    color: #f4f4f4; /* Use light text */
 }
 
+/* Style links in the footer in dark mode */
 body.dark footer a {
-    color: #bbdefb;
+    color: #bbdefb; /* Use a light blue color for links */
 }
 
+/* Style the "See More" and "See Less" buttons in dark mode */
 body.dark #seeMoreBtn,
 body.dark #seeLessBtn {
-    background-color: #218838;
+    background-color: #218838; /* Use a darker green color */
 }
 
+/* Style the "Show Password" label in dark mode */
 body.dark .show-password-label {
-    color: #f4f4f4;
+    color: #f4f4f4; /* Use light text */
 }
 
+/* Style the remove image button in dark mode */
 body.dark .remove-image-btn {
-    background-color: #ff4d4d;
-    color: #fff;
+    background-color: #ff4d4d; /* Keep the red color */
+    color: #fff; /* Use white text */
 }
 
-/* The container box—our main wrapper for forms and content */
+/* Style the main container box for forms and content */
 .container {
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px gray;
-    width: 300px;
-    text-align: center;
-    margin-bottom: 20px;
+    background-color: white; /* Use a white background */
+    padding: 20px; /* Add space inside the box */
+    border-radius: 8px; /* Round the corners */
+    box-shadow: 0 0 10px gray; /* Add a shadow for a 3D effect */
+    width: 300px; /* Set the width */
+    text-align: center; /* Center the text inside */
+    margin-bottom: 20px; /* Add space below the box */
 }
 
-/* Style all input fields—used in login, register, and dashboard */
+/* Style all input fields and dropdowns */
 input,
 select {
-    padding: 10px;
-    margin: 0 10px; /* Add margin for spacing between inputs */
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    width: 100%;
-    box-sizing: border-box;
+    padding: 10px; /* Add space inside the field */
+    margin: 0 10px; /* Add space around the field */
+    border: 1px solid #ccc; /* Add a light gray border */
+    border-radius: 4px; /* Round the corners */
+    width: 100%; /* Make the field fill the container */
+    box-sizing: border-box; /* Include padding in the width */
 }
 
-/* Buttons—used everywhere, so they gotta look sharp */
+/* Style all buttons */
 button {
-    padding: 10px 15px;
-    margin: 0 10px; /* Add margin for spacing between buttons */
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+    padding: 10px 15px; /* Add space inside the button */
+    margin: 0 10px; /* Add space around the button */
+    background-color: #007bff; /* Use a blue background */
+    color: white; /* Use white text */
+    border: none; /* Remove the default border */
+    border-radius: 4px; /* Round the corners */
+    cursor: pointer; /* Show a hand icon when hovering */
 }
 
-/* Navigation bar for all pages */
+/* Style the navigation bar at the top */
 nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    display: flex;
-    justify-content: space-between; /* Revert to space-between for natural spacing */
-    align-items: center;
-    background-color: #fff;
-    padding: 10px 20px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
+    position: fixed; /* Keep the nav at the top of the page */
+    top: 0; /* Start at the top */
+    left: 0; /* Start at the left */
+    width: 100%; /* Cover the full width */
+    display: flex; /* Use flexbox to organize content */
+    justify-content: space-between; /* Spread items apart */
+    align-items: center; /* Center items vertically */
+    background-color: #fff; /* Use a white background */
+    padding: 10px 20px; /* Add space inside the nav */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Add a shadow below */
+    z-index: 1000; /* Keep the nav above other content */
 }
 
-/* Wrapper for navigation links to center them */
+/* Style the wrapper for navigation links */
 .nav-links {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px; /* Space between links */
+    display: flex; /* Use flexbox to organize links */
+    justify-content: center; /* Center the links */
+    align-items: center; /* Center the links vertically */
+    gap: 20px; /* Add space between links */
 }
 
+/* Style the links in the navigation bar */
 nav a {
-    color: #007bff;
-    text-decoration: none;
-    margin: 0;
+    color: #007bff; /* Use a blue color for links */
+    text-decoration: none; /* Remove the default underline */
+    margin: 0; /* Remove default spacing */
 }
 
+/* Add an underline when hovering over nav links */
 nav a:hover {
-    text-decoration: underline;
+    text-decoration: underline; /* Add an underline on hover */
 }
 
-/* Style the search bar */
+/* Style the search bar on the dashboard */
 #searchBar {
-    width: 200px;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 14px;
-    background: #fff;
-    color: #333;
+    width: 200px; /* Set the width */
+    padding: 8px; /* Add space inside the search bar */
+    border: 1px solid #ccc; /* Add a light gray border */
+    border-radius: 4px; /* Round the corners */
+    font-size: 14px; /* Set the text size */
+    background: #fff; /* Use a white background */
+    color: #333; /* Use dark text */
 }
 
+/* Style the placeholder text in the search bar */
 #searchBar::placeholder {
-    color: #aaa;
+    color: #aaa; /* Use a light gray color for placeholder text */
 }
 
-/* Style the category filter dropdown */
+/* Style the category filter dropdown on the dashboard */
 #categoryFilter {
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 14px;
+    padding: 8px; /* Add space inside the dropdown */
+    border: 1px solid #ccc; /* Add a light gray border */
+    border-radius: 4px; /* Round the corners */
+    font-size: 14px; /* Set the text size */
 }
 
-/* Footer for all pages */
+/* Style the footer at the bottom of all pages */
 footer {
-    background-color: #f8f9fa;
-    padding: 10px;
-    text-align: center;
-    width: 100%;
-    margin-top: auto;
-    position: fixed;
-    bottom: 0;
-    left: 0;
+    background-color: #f8f9fa; /* Use a light gray background */
+    padding: 10px; /* Add space inside the footer */
+    text-align: center; /* Center the text */
+    width: 100%; /* Cover the full width */
+    margin-top: auto; /* Push the footer to the bottom */
+    position: fixed; /* Keep the footer at the bottom */
+    bottom: 0; /* Stick to the bottom */
+    left: 0; /* Start at the left */
 }
 
+/* Style links in the footer */
 footer a {
-    color: #007bff;
-    text-decoration: none;
+    color: #007bff; /* Use a blue color for links */
+    text-decoration: none; /* Remove the default underline */
 }
 
+/* Add an underline when hovering over footer links */
 footer a:hover {
-    text-decoration: underline;
+    text-decoration: underline; /* Add an underline on hover */
 }
 
 /* --- Dashboard-Specific Styles Start Here --- */
 
-/* Widen the container for the dashboard—it’s got more stuff! */
+/* Make the container wider for the dashboard page */
 .container.dashboard {
-    width: 600px;
-    max-height: calc(100vh - 140px); /* Leave space for fixed nav and footer */
-    overflow-y: auto; /* Scrollable container */
+    width: 600px; /* Set a wider width for more content */
+    max-height: calc(100vh - 140px); /* Limit height to fit between nav and footer */
+    overflow-y: auto; /* Allow scrolling if content overflows */
 }
 
-/* Style the notes list—no clutter, just notes */
+/* Style the list of notes on the dashboard */
 #notesList {
-    list-style-type: none;
-    padding: 0;
-    margin-bottom: 20px;
+    list-style-type: none; /* Remove bullet points */
+    padding: 0; /* Remove default spacing */
+    margin-bottom: 20px; /* Add space below the list */
 }
 
-/* Each note as a little card—makes them feel special */
+/* Style each note in the list like a card */
 #notesList li {
-    background-color: #f9f9f9;
-    padding: 15px;
-    margin-bottom: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    cursor: pointer; /* Indicate clickable */
-    transition: background-color 0.2s;
+    background-color: #f9f9f9; /* Use a light gray background */
+    padding: 15px; /* Add space inside the note */
+    margin-bottom: 10px; /* Add space between notes */
+    border: 1px solid #ddd; /* Add a light gray border */
+    border-radius: 4px; /* Round the corners */
+    cursor: pointer; /* Show a hand icon to indicate it’s clickable */
+    transition: background-color 0.2s; /* Smoothly change background color on hover */
 }
 
+/* Change the background color when hovering over a note */
 #notesList li:hover {
-    background-color: #e9ecef;
+    background-color: #e9ecef; /* Use a slightly darker gray on hover */
 }
 
-/* Style for note preview */
+/* Style the preview area inside each note */
 .note-preview {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
+    display: flex; /* Use flexbox to organize content */
+    flex-direction: column; /* Stack content in a column */
+    gap: 5px; /* Add space between elements */
 }
 
-/* Truncated content style */
+/* Style the shortened content in the note preview */
 .note-preview .content {
-    color: #666;
-    font-size: 14px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    color: #666; /* Use a gray color for the text */
+    font-size: 14px; /* Set the text size */
+    white-space: nowrap; /* Keep text on one line */
+    overflow: hidden; /* Hide overflow text */
+    text-overflow: ellipsis; /* Add "..." to overflow text */
 }
 
-/* Style for buttons inside the note preview */
+/* Ensure the note content text color is readable in light mode */
+body.light .note-preview .content {
+    color: #666; /* Use a gray color for light mode */
+}
+
+/* Ensure the note content text color is readable in dark mode */
+body.dark .note-preview .content {
+    color: #e0e0e0; /* Use a light gray color for dark mode */
+}
+
+/* Style buttons inside the note preview */
 .note-preview button {
-    margin: 5px 0 0 0;
-    padding: 5px 10px;
-    font-size: 12px;
+    margin: 5px 0 0 0; /* Add space above the button */
+    padding: 5px 10px; /* Add space inside the button */
+    font-size: 12px; /* Set a smaller text size */
 }
 
-/* The note creation form—stands out a bit */
+/* Style the note creation form */
 #noteForm {
-    background-color: #f0f0f0;
-    padding: 20px;
-    border-radius: 8px;
-    margin-bottom: 20px;
+    background-color: #f0f0f0; /* Use a light gray background */
+    padding: 20px; /* Add space inside the form */
+    border-radius: 8px; /* Round the corners */
+    margin-bottom: 20px; /* Add space below the form */
 }
 
-/* Textarea for note content—needs some extra love */
+/* Style the textarea for note content */
 textarea {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    min-height: 100px;
+    width: 100%; /* Fill the container */
+    padding: 10px; /* Add space inside the textarea */
+    margin-bottom: 15px; /* Add space below the textarea */
+    border: 1px solid #ccc; /* Add a light gray border */
+    border-radius: 4px; /* Round the corners */
+    box-sizing: border-box; /* Include padding in the width */
+    min-height: 100px; /* Set a minimum height */
 }
 
-/* Modal for creating/editing notes and viewing details */
+/* Style the pop-up (modal) for creating/editing notes and viewing details */
 .modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    overflow-y: auto; /* Allow scrolling if modal content overflows */
-    z-index: 1001; /* Ensure modal is above the footer */
+    display: none; /* Hide the modal by default */
+    position: fixed; /* Keep the modal in place */
+    top: 0; /* Start at the top */
+    left: 0; /* Start at the left */
+    width: 100%; /* Cover the full width */
+    height: 100%; /* Cover the full height */
+    background: rgba(0, 0, 0, 0.5); /* Add a dark overlay */
+    overflow-y: auto; /* Allow scrolling if content overflows */
+    z-index: 1001; /* Keep the modal above the footer */
 }
 
+/* Style the content inside the modal */
 .modal-content {
-    background: white;
-    margin: 5% auto;
-    padding: 20px;
-    width: 80%;
-    max-width: 500px;
-    border-radius: 5px;
-    max-height: calc(100vh - 140px); /* Account for nav and footer */
-    overflow-y: auto; /* Make modal content scrollable */
-    box-sizing: border-box;
+    background: white; /* Use a white background */
+    margin: 5% auto; /* Center the modal with space at the top */
+    padding: 20px; /* Add space inside the modal */
+    width: 80%; /* Set the width */
+    max-width: 500px; /* Limit the maximum width */
+    border-radius: 5px; /* Round the corners */
+    max-height: calc(100vh - 140px); /* Limit height to fit between nav and footer */
+    overflow-y: auto; /* Allow scrolling if content overflows */
+    box-sizing: border-box; /* Include padding in the width */
 }
 
+/* Style the modal content in dark mode */
 body.dark .modal-content {
-    background: #444;
+    background: #444; /* Use a dark gray background */
 }
 
+/* Style the close button in the modal */
 .close {
-    float: right;
-    font-size: 20px;
-    cursor: pointer;
+    float: right; /* Place the button on the right */
+    font-size: 20px; /* Set the text size */
+    cursor: pointer; /* Show a hand icon when hovering */
 }
 
-/* Detailed view modal styles */
+/* Style the paragraphs in the note details modal */
 #noteDetailModal .modal-content p {
-    margin: 10px 0;
+    margin: 10px 0; /* Add space above and below paragraphs */
 }
 
+/* Style the content area in the note details modal */
 #noteDetailModal #detailContent {
-    background-color: #f9f9f9;
-    padding: 10px;
-    border-radius: 4px;
-    white-space: pre-wrap; /* Preserve line breaks */
+    background-color: #f9f9f9; /* Use a light gray background */
+    padding: 10px; /* Add space inside the area */
+    border-radius: 4px; /* Round the corners */
+    white-space: pre-wrap; /* Keep line breaks in the text */
 }
 
+/* Style the content area in the note details modal in dark mode */
 body.dark #noteDetailModal #detailContent {
-    background-color: #555;
+    background-color: #555; /* Use a darker gray background */
 }
 
+/* Style the image in the note details modal */
 #noteDetailModal #detailImage img {
-    max-width: 100%;
-    margin-top: 10px;
-    border-radius: 4px;
+    max-width: 100%; /* Make the image fit the modal */
+    margin-top: 10px; /* Add space above the image */
+    border-radius: 4px; /* Round the corners */
 }
 
+/* Style the "Edit Note" button in the note details modal */
 #editNoteBtn {
-    background-color: #007bff;
-    margin-right: 10px;
+    background-color: #007bff; /* Use a blue background */
+    margin-right: 10px; /* Add space to the right */
 }
 
+/* Style the "Delete Note" button in the note details modal */
 #deleteNoteBtn {
-    background-color: #ff4d4d;
+    background-color: #ff4d4d; /* Use a red background */
 }
 
-/* Pagination buttons container */
+/* Style the container for pagination buttons */
 .pagination-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 10px;
+    display: flex; /* Use flexbox to organize buttons */
+    justify-content: center; /* Center the buttons */
+    gap: 10px; /* Add space between buttons */
+    margin-top: 10px; /* Add space above the buttons */
 }
 
-/* See More and See Less buttons */
+/* Style the "See More" and "See Less" buttons */
 #seeMoreBtn,
 #seeLessBtn {
-    padding: 10px 20px;
-    background-color: #28a745;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+    padding: 10px 20px; /* Add space inside the buttons */
+    background-color: #28a745; /* Use a green background */
+    color: white; /* Use white text */
+    border: none; /* Remove the default border */
+    border-radius: 4px; /* Round the corners */
+    cursor: pointer; /* Show a hand icon when hovering */
 }
 
-/* Show Password checkbox label */
+/* Style the "Show Password" checkbox label */
 .show-password-label {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    margin: 10px 0;
-    font-size: 14px;
-    color: #333;
+    display: flex; /* Use flexbox to organize content */
+    align-items: center; /* Center items vertically */
+    justify-content: flex-start; /* Align items to the left */
+    margin: 10px 0; /* Add space above and below */
+    font-size: 14px; /* Set the text size */
+    color: #333; /* Use dark text */
 }
 
+/* Style the checkbox inside the "Show Password" label */
 .show-password-label input[type="checkbox"] {
-    margin: 0 5px 0 0;
-    width: auto; /* Override the default width for checkboxes */
+    margin: 0 5px 0 0; /* Add space around the checkbox */
+    width: auto; /* Let the checkbox use its default size */
 }
 
-/* Image upload container */
+/* Style the container for the image upload field */
 .image-upload-container {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    position: relative;
+    display: flex; /* Use flexbox to organize content */
+    align-items: center; /* Center items vertically */
+    gap: 10px; /* Add space between elements */
+    position: relative; /* Allow positioning of the remove button */
 }
 
+/* Style the file input in the image upload container */
 .image-upload-container input[type="file"] {
-    flex: 1;
+    flex: 1; /* Make the input take up available space */
 }
 
-/* Remove image button (X) */
+/* Style the remove image button (X) */
 .remove-image-btn {
-    padding: 0;
-    width: 24px;
-    height: 24px;
-    line-height: 24px;
-    text-align: center;
-    background-color: #ff4d4d;
-    color: white;
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    font-size: 14px;
+    padding: 0; /* Remove default padding */
+    width: 24px; /* Set the width */
+    height: 24px; /* Set the height */
+    line-height: 24px; /* Center the text vertically */
+    text-align: center; /* Center the text horizontally */
+    background-color: #ff4d4d; /* Use a red background */
+    color: white; /* Use white text */
+    border: none; /* Remove the default border */
+    border-radius: 50%; /* Make the button round */
+    cursor: pointer; /* Show a hand icon when hovering */
+    font-size: 14px; /* Set the text size */
 }
 
+/* Change the background color of the remove image button on hover */
 .remove-image-btn:hover {
-    background-color: #e63946;
+    background-color: #e63946; /* Use a darker red on hover */
 }
 
-/* Logout button—make it pop with a different color */
+/* Style the logout button to stand out */
 #logout {
-    background-color: #ff4d4d;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 4px;
-    cursor: pointer;
+    background-color: #ff4d4d; /* Use a red background */
+    color: white; /* Use white text */
+    border: none; /* Remove the default border */
+    padding: 10px 20px; /* Add space inside the button */
+    border-radius: 4px; /* Round the corners */
+    cursor: pointer; /* Show a hand icon when hovering */
 }
 
-/* Clear floats so nothing gets weird */
+/* Clear any floating elements in the container */
 .container::after {
-    content: "";
-    display: table;
-    clear: both;
+    content: ""; /* Add an empty element */
+    display: table; /* Use table display to clear floats */
+    clear: both; /* Clear any floating elements */
 }

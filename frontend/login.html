@@ -1,33 +1,46 @@
+<!-- This is the login page where users can sign into the app -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Digital Note Library</title>
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <link rel="stylesheet" href="styles.css">
+    <!-- Set up the page basics -->
+    <meta charset="UTF-8"> <!-- Use UTF-8 for text encoding -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Make the page fit on all screen sizes -->
+    <title>Login - Digital Note Library</title> <!-- Title of the page shown in the browser tab -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico"> <!-- Small icon shown in the browser tab -->
+    <link rel="stylesheet" href="styles.css"> <!-- Link to the styles.css file for styling -->
 </head>
 <body>
+    <!-- Main content area with the login form -->
     <div class="container">
+        <!-- Page title -->
         <h1>Login</h1>
+        <!-- Form for users to enter their login details -->
         <form id="loginForm">
+            <!-- Field for the user’s email -->
             <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
+            <input type="email" id="email" name="email" required> <!-- Input where users type their email -->
             <br>
+            <!-- Field for the user’s password -->
             <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
+            <input type="password" id="password" name="password" required> <!-- Input where users type their password -->
             <br>
+            <!-- Checkbox to show or hide the password -->
             <label for="showPassword" class="show-password-label">
-                <input type="checkbox" id="showPassword"> Show Password
+                <input type="checkbox" id="showPassword"> Show Password <!-- Checkbox to show the password -->
             </label>
             <br>
+            <!-- Button to submit the login form -->
             <button type="submit">Login</button>
         </form>
+        <!-- Link to the registration page for new users -->
         <p>Don't have an account? <a href="register.html">Register here</a></p>
     </div>
+    <!-- Footer at the bottom of the page -->
     <footer>
+        <!-- Copyright notice -->
         <p>© 2025 Digital Note Library. All rights reserved.</p>
     </footer>
+    <!-- Link to the JavaScript file that makes the page work -->
     <script src="login.js"></script>
 </body>
 </html>
